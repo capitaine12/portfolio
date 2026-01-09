@@ -1,0 +1,40 @@
+import type { Project } from "../types/types";
+
+export const projects: Project[] = [
+{
+    id: 1, title: "Parainage électoral",
+    image: "https://via.placeholder.com/900x500",
+    stacks: ["React", "TypeScript", "Tailwind"],
+    description: "Projet de parainage électoral"
+},
+{
+    id: 2, title: "Log BFEM",
+    image: "",
+    stacks: ["Laravel", "MySQL", "API"],
+    description: "Logiciel de gestion des candidats au BFEM"
+},
+{
+    id: 3, title: "Projet 3",
+    image: "",
+    stacks: [],
+    description: ""
+},
+{
+    id: 4, title: "Projet 4",
+    image: "",
+    stacks: [],
+    description: ""
+},
+{
+    id: 5, title: "Projet 5",
+    image: "",
+    stacks: [],
+    description: ""
+},
+{
+    id: 6, title: "Projet 6",
+    image: "",
+    stacks: [],
+    description: ""
+},
+];

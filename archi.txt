@@ -1,0 +1,81 @@
+src/
+   pages/
+ │     Home.tsx
+ │     Projects.tsx
+ │     ProjectDetails.tsx
+ │     About.tsx
+ │   └ Contact.tsx
+ │
+   components/
+ │     Navbar.tsx
+ │     Sidebar.tsx
+ │   └ ProjectCard.tsx
+ │
+   assets/
+ └ App.tsx
+
+===========================================================
+
+
+src/
+│
+ ─ assets/
+│    ─ images/
+│    ─ icons/
+│
+ ─ components/
+│    ─ layout/
+│   │    ─ Header.tsx
+│   │    ─ Footer.tsx
+│   │   └─ MainLayout.tsx
+│   │
+│    ─ ui/
+│   │    ─ Button.tsx
+│   │   └─ Container.tsx
+│
+ ─ pages/
+│    ─ Home/
+│   │   └─ Home.tsx 
+│    ─ Design/
+│   │   └─ Design.tsx
+│    ─ Projects/
+│   │   └─ Projects.tsx
+│    ─ Services/
+│   │   └─ Services.tsx
+│   └─ Contact/
+│       └─ Contact.tsx
+│
+ ─ routes/
+│   └─ AppRoutes.tsx
+│
+ ─ styles/
+│   └─ globals.css
+│
+ ─ App.tsx
+ ─ main.tsx
+└─ vite-env.d.ts
+
+
+==================================================
+ou sécuriser le bouton téléchargement (UX réel)
+
+
+swipe mobile (drag)
+
+preload image suivante
+
+animation slide (Framer Motion)
+
+thumbnails en bas
+
+====================================================
+ajouter une animation de sortie (fade)
+
+rendre le loader non bloquant
+
+afficher le loader uniquement si la page > X ms
+
+synchroniser le loader avec des requêtes API
+
+=================================================
+mkdir Project && touch Project/Projects.tsx Project/ProjectCard.tsx Project/ProjectModal.tsx Project/projects.data.ts

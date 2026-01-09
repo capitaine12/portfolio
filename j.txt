@@ -1,0 +1,213 @@
+<div className="relative hidden min-h-screen grid-cols-[2fr_1fr] lg:grid">
+        <div className="flex flex-col justify-center pl-32 pr-8">
+        <span className="relative left-24 text-lg font-extrabold sm:text-lg">
+          Je me nomme
+        </span>
+
+        <h1 className="text-9xl font-extrabold leading-[0.95] text-center
+        lg:text-left sm:text-7xl
+          lg:text-9xl">
+
+          CHEIKH
+        </h1>
+
+<div className="flex items-center justify-center gap-5">
+          <span className=" inline-block w-fit bg-black px-4 py-1  font-bold text-white">
+          Développeur frontend & UI / UX
+        </span>
+
+        <h2 className="text-5xl font-bold leading-none
+        sm:flex-row
+          sm:justify-center
+          lg:justify-start">
+          NDIAYE
+        </h2>
+</div>
+       <div className="flex justify-center">
+         <button
+          onClick={onMoreClick}
+          className="mt-10 flex w-fit items-center gap-3 rounded-full border-2 border-black px-6 py-2 font-semibold transition hover:bg-black hover:text-white"
+        >
+          Voir Plus <BsArrowRight size={18} />
+        </button>
+       </div>
+
+        {/* Télécharger CV */}
+        <button
+          onClick={onDownloadCV}
+          className="absolute bottom-6 sm:text-base left-1/2 -translate-x-1/2 flex items-center gap-2 text-base font-medium"
+        >
+          Télécharger CV <BsChevronDown size={18} />
+        </button>
+      </div>
+
+      {/* RIGHT – IMAGE */}
+      <div className="flex justify-end items-center lg:order-2">
+        <img
+          src={profile}
+          alt="Cheikh Ndiaye"
+          className="h-screen  object-cover lg:h-full lg:max-h-screen"
+        />
+      </div>
+
+
+      ====================
+@layer components { 
+  /* BASE */
+  .btn-base {
+    @apply
+      relative
+      flex items-center justify-center gap-2
+      px-6 py-1.5
+      font-semibold
+      rounded-full
+      border-2 border-black
+      overflow-hidden
+      select-none
+      transition-all duration-300
+      active:scale-[0.96]
+      focus:outline-none;
+  }
+
+  .btn-content {
+    @apply relative z-10 flex items-center gap-2;
+  }
+
+  /* VOIR PLUS — conforme maquette */
+  .btn-primary {
+    @apply bg-transparent text-black mt-10;
+  }
+
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: black;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: 0;
+  }
+
+  .btn-primary:hover::before {
+    transform: translateX(0);
+  }
+
+  .btn-primary:hover {
+    @apply text-white;
+  }
+
+  .btn-primary .btn-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .btn-primary:hover .btn-icon {
+    transform: translateX(4px);
+  }
+
+  /* TELECHARGER CV — SIMPLE (maquette) */
+  .btn-download {
+    @apply bg-transparent text-black border-none;
+  }
+
+  .btn-download .btn-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-download:hover .btn-icon {
+    transform: translateY(4px);
+  }
+
+  /* LOADER */
+  .loader {
+    @apply
+      h-5 w-5
+      rounded-full
+      border-2 border-black border-t-transparent
+      animate-spin;
+  }
+}
+
+
+
+
+
+
+import type { FC } from "react";
+import { BsArrowRight, BsX } from "react-icons/bs";
+
+const ProjectModal: FC<any> = ({ project, onClose }) => {
+  return (
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="
+          bg-white rounded-3xl
+          w-[90%] max-w-6xl
+          p-8 relative
+        "
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-3xl"
+        >
+          <BsX />
+        </button>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Preview */}
+          <img
+            src={project.cover}
+            className="rounded-xl shadow"
+          />
+
+          {/* Infos */}
+          <div>
+            <h2 className="text-3xl font-bold underline">
+              {project.title}
+            </h2>
+
+            <p className="mt-4 text-gray-600">
+              {project.description}
+            </p>
+
+            {project.url ? (
+              <a
+                href={project.url}
+                target="_blank"
+                className="px-6 py-3 border rounded-full display inline-flex items-center gap-2 mt-6 hover:bg-gray-100 transition"
+              >
+                <span>Lien du site </span> <BsArrowRight size={25} />
+              </a>
+            ) : (
+              <button disabled className="opacity-50 cursor-not-allowed">
+                En production
+              </button>
+            )}
+
+          </div>
+        </div>
+
+        {/* Thumbnails */}
+        <div className="flex gap-4 mt-6">
+          {project.images.map((img: string) => (
+            <img
+              key={img}
+              src={img}
+              className="w-32 rounded-lg shadow"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProjectModal;
+
+
+
+
+Design UI & Intégration

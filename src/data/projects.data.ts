@@ -1,0 +1,55 @@
+import type { Project } from "@/types/types";
+
+export const projects: Project[] = [
+  {
+    id: 1,
+    title: "Parainage",
+    description: "Site de parrainage des élections nationales",
+    thumbnail: "/src/assets/images/web/p1.png",
+    cover: "/src/assets/images/web/p1.png",
+    images: [
+      "/src/assets/images/web/p1.png",
+      "/src/assets/images/web/p2.png",
+      "/src/assets/images/web/p3.png",
+      "/src/assets/images/web/p4.png",
+      "/src/assets/images/web/p5.png",
+      "/src/assets/images/web/p6.png",
+    ],
+    stacks: ["html", "css", "javascript"],
+    link: "https://humm-niam.com",
+  },
+    {
+    id: 2,
+    title: "Cosmos X Docs",
+    description: "Etre un blue et timide n'aide pas l'etudiants(es) a trouver les documents anciens au près de leurs ainés. Cosmos X Docs est une plateforme de partage de documents entre étudiants(es) de l'université.",
+    thumbnail: "/src/assets/images/web/c1.png",
+    cover: "/src/assets/images/web/c1.png",
+    images: [
+      "/src/assets/images/web/c1.png",
+      "/src/assets/images/web/c2.png",
+      "/src/assets/images/web/c3.png",
+      "/src/assets/images/web/c4.png",
+      "/src/assets/images/web/c5.png",
+      "/src/assets/images/web/c6.png",
+      "/src/assets/images/web/c7.png",
+    ],
+    stacks: ["tailwind", "laravel"],
+  },
+      {
+    id: 3,
+    title: "Humm Niam",
+    description: "Site de partage de recettes de cuisine",
+    thumbnail: "/src/assets/images/web/h1.png",
+    cover: "/src/assets/images/web/h1.png",
+    images: [
+      "/src/assets/images/web/h1.png",
+      "/src/assets/images/web/h2.png",
+      "/src/assets/images/web/h3.png",
+      "/src/assets/images/web/h4.png",
+      "/src/assets/images/web/h5.png",
+      "/src/assets/images/web/h6.png",
+      "/src/assets/images/web/h7.png",
+    ],
+    stacks: ["react", "tailwind"],
+  },
+];
