@@ -39,7 +39,7 @@ export const projects: Project[] = [
     id: 3,
     title: "Humm Niam",
     description: "Site de partage de recettes de cuisine",
-    thumbnail: "/src/assets/images/web/h1.png",
+    thumbnail: "@/assets/images/web/h1.png",
     cover: "/src/assets/images/web/h1.png",
     images: [
       "/src/assets/images/web/h1.png",
