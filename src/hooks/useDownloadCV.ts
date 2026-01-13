@@ -15,7 +15,6 @@ export const useDownloadCV = ({
 
   const downloadCV = async () => {
     if (loading) return;
-
     if (!fileUrl) {
       setError("Lien de téléchargement invalide");
       return;
@@ -28,7 +27,6 @@ export const useDownloadCV = ({
       abortControllerRef.current = new AbortController();
 
       const response = await fetch(fileUrl, {
-        method: "GET",
         signal: abortControllerRef.current.signal,
       });
 
@@ -37,13 +35,16 @@ export const useDownloadCV = ({
       }
 
       const blob = await response.blob();
+// Vérification du type MIME pour s'assurer que c'est un PDF
+      const isPdf =
+        blob.type === "application/pdf" ||
+        fileName.toLowerCase().endsWith(".pdf");
 
-      // 🔐 Sécurité : forcer type PDF si nécessaire
-      if (blob.type && !blob.type.includes("pdf")) {
+      if (!isPdf) {
         throw new Error("Format de fichier non autorisé");
       }
 
-      const url = window.URL.createObjectURL(blob);
+      const url = URL.createObjectURL(blob);
 
       const link = document.createElement("a");
       link.href = url;
@@ -55,14 +56,14 @@ export const useDownloadCV = ({
       link.click();
 
       link.remove();
-      window.URL.revokeObjectURL(url);
-      setLoading(false);
+      URL.revokeObjectURL(url);
 
     } catch (err: any) {
       if (err.name !== "AbortError") {
         console.error(err);
         setError("Une erreur est survenue lors du téléchargement");
       }
+    } finally {
       setLoading(false);
     }
   };

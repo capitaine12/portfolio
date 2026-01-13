@@ -4,6 +4,7 @@ import { BsArrowRight, BsChevronDown } from 'react-icons/bs';
 import profile from '@/assets/images/profile.png';
 import Button from '@/components/UI/Button';
 import { useDownloadCV } from "@/hooks/useDownloadCV";
+import cv from "@/assets/cv/Cheikh_Ndiaye_CV.pdf";
 
 
 export const HeroContent: FC<HeroProps> = ({
@@ -12,7 +13,7 @@ export const HeroContent: FC<HeroProps> = ({
 
 
  const { downloadCV, loading } = useDownloadCV({
-  fileUrl: "/cv/Cheikh_Ndiaye_CV.pdf",
+  fileUrl: cv,
   fileName: "Cheikh_Ndiaye_CV.pdf",
 })
 
@@ -60,14 +61,13 @@ export const HeroContent: FC<HeroProps> = ({
           </Button>
 
           <Button
-  variant="download"
-  icon={<BsChevronDown size={25} />}
-  onClick={downloadCV}
-  loading={loading}
->
-  Télécharger CV
-</Button>
-
+          variant="download"
+          icon={<BsChevronDown size={25} />}
+          onClick={downloadCV}
+          loading={loading}
+          ariaLabel="Télécharger mon CV">
+            Télécharger CV
+            </Button>
         </div>
       </div>
 
@@ -104,11 +104,14 @@ export const HeroContent: FC<HeroProps> = ({
             onClick={onMoreClick}>Voir Plus</Button>
 
           </div>
-          <Button variant="download"
-          icon={<BsChevronDown size={20} />}
+          <Button
+          variant="download"
+          icon={<BsChevronDown size={25} />}
           onClick={downloadCV}
           loading={loading}
-          className="animate-float">Télécharger CV</Button>
+          ariaLabel="Télécharger mon CV">
+            Télécharger CV
+          </Button>
         </div>
 
         {/* IMAGE */}

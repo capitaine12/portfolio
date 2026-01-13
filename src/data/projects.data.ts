@@ -23,6 +23,7 @@ import h6 from "@/assets/images/web/h7.png";
 import h7 from "@/assets/images/web/h8.png";
 
 export const projects: Project[] = [
+  
   {
     id: 1,
     title: "Parainage",

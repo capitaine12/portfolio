@@ -1,16 +1,8 @@
-import type {
-  ButtonHTMLAttributes,
-  FC,
-  ReactNode,
-} from 'react';
+import {useState, type FC,} from 'react';
 import clsx from 'clsx';
+import type { ButtonProps } from '@/types/types';
 
-interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'download';
-  icon?: ReactNode;
-  loading?: boolean;
-}
+
 
 const Button: FC<ButtonProps> = ({
   children,
@@ -19,22 +11,24 @@ const Button: FC<ButtonProps> = ({
   loading = false,
   disabled,
   className,
+  ariaLabel,
   ...props
 }) => {
+  const [error, setError] = useState<string | null>(null);
+
   return (
+
     <button
       {...props}
       disabled={disabled || loading}
       aria-busy={loading}
-      aria-label={loading ? "Téléchargement du CV en cours" : "Télécharger le CV"}
+      aria-label={ariaLabel}
       className={clsx(
         'btn-base',
         `btn-${variant}`,
         loading && 'opacity-70 cursor-not-allowed',
         className
-      )}
-
-    >
+      )}>
       {loading ? (
         <span className="btn-loader">
           <span className="loader" />
@@ -45,6 +39,7 @@ const Button: FC<ButtonProps> = ({
           {icon && <span className="btn-icon">{icon}</span>}
         </span>
       )}
+      {error && <span className="btn-error">{error}</span>}
 
     </button>
   );

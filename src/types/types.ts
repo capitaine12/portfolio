@@ -1,5 +1,7 @@
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 export type StackType = "react" | "tailwind" | "laravel" | "vue" | "nodejs" | "django" | "flutter" | "html" | "css" | "javascript";
+export type IconType = "Instagram" | "LinkedIn" | "whatsapp" | "Email";
 
 export interface Project {
   id: number;
@@ -57,10 +59,17 @@ export interface Service {
   image: string;
 }
 
-export type IconType = "Instagram" | "LinkedIn" | "whatsapp" | "Email";
 
 export interface Contact{
   name: string;
   icon: IconType;
   link: string;
+}
+
+export interface ButtonProps 
+extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'download';
+  icon?: ReactNode;
+  loading?: boolean;
+  ariaLabel?: string;
 }
