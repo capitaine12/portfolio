@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @layer components {
 .btn-base {
   @apply relative 
@@ -9,10 +15,16 @@
   rounded-full 
   border-2 border-black 
   px-6 py-1 
+  min-h-[42px]
+  min-w-[180px]
+  flex items-center justify-center
   font-semibold transition-all 
   duration-300;
 }
+
 }
+
+/* BUTTON CONTENT */
 .btn-content {
   @apply flex items-center gap-2 relative z-10;
 }
@@ -51,8 +63,10 @@
 /* DOWNLOAD BUTTON */
 .btn-download {
   @apply border-none text-black bg-transparent 
-  absolute bottom-6 right-1 transform -translate-x-1/2;
+  absolute bottom-6 right-1 transform -translate-x-1/2
+  flex items-center justify-center;
 }
+
 
 .btn-download .btn-icon {
   transition: transform 0.3s ease;
@@ -69,12 +83,14 @@
     rounded-full
     border-2
     border-black
-    border-t-black
     border-t-transparent
-    animate-spin
-    relative
-    z-10;
+    animate-spin;
 }
+
+.btn-loader {
+  @apply flex items-center justify-center h-full w-full;
+}
+
 
 @layer utilities {
   .animate-hero {

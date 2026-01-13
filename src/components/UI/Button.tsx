@@ -25,22 +25,27 @@ const Button: FC<ButtonProps> = ({
     <button
       {...props}
       disabled={disabled || loading}
+      aria-busy={loading}
+      aria-label={loading ? "Téléchargement du CV en cours" : "Télécharger le CV"}
       className={clsx(
         'btn-base',
         `btn-${variant}`,
         loading && 'opacity-70 cursor-not-allowed',
         className
       )}
-      
+
     >
       {loading ? (
-        <span className="loader" />
+        <span className="btn-loader">
+          <span className="loader" />
+        </span>
       ) : (
         <span className="btn-content">
           {children}
           {icon && <span className="btn-icon">{icon}</span>}
         </span>
       )}
+
     </button>
   );
 };

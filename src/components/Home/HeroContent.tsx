@@ -1,25 +1,20 @@
-import { useState, type FC } from 'react';
+import type { FC } from 'react';
 import type { HeroProps } from '@/types/types';
 import { BsArrowRight, BsChevronDown } from 'react-icons/bs';
 import profile from '@/assets/images/profile.png';
 import Button from '@/components/UI/Button';
+import { useDownloadCV } from "@/hooks/useDownloadCV";
+
 
 export const HeroContent: FC<HeroProps> = ({
   onMoreClick,
-  onDownloadCV,
 }) => {
 
-  const [loadingCV, setLoadingCV] = useState(false);
 
-const handleDownloadCV = async () => {
-  setLoadingCV(true);
-
-  // simulation téléchargement
-  setTimeout(() => {
-    setLoadingCV(false);
-    onDownloadCV?.();
-  }, 1500);
-};
+ const { downloadCV, loading } = useDownloadCV({
+  fileUrl: "/cv/Cheikh_Ndiaye_CV.pdf",
+  fileName: "Cheikh_Ndiaye_CV.pdf",
+})
 
 
   return (
@@ -30,7 +25,8 @@ const handleDownloadCV = async () => {
         <img
           src={profile}
           alt="Cheikh Ndiaye"
-          className="absolute inset-0 h-full w-full object-cover"
+           fetchPriority="high"
+          className="absolute inset-0 h-screen w-full object-cover"
         />
 
         {/* OVERLAY */}
@@ -64,12 +60,14 @@ const handleDownloadCV = async () => {
           </Button>
 
           <Button
-            variant="download"
-            icon={<BsChevronDown size={25} />}
-            onClick={handleDownloadCV}
-            loading={loadingCV}
-            
-          >Télécharger CV</Button>
+  variant="download"
+  icon={<BsChevronDown size={25} />}
+  onClick={downloadCV}
+  loading={loading}
+>
+  Télécharger CV
+</Button>
+
         </div>
       </div>
 
@@ -105,13 +103,11 @@ const handleDownloadCV = async () => {
             icon={<BsArrowRight size={25} />}
             onClick={onMoreClick}>Voir Plus</Button>
 
-
-
           </div>
           <Button variant="download"
           icon={<BsChevronDown size={20} />}
-          onClick={handleDownloadCV}
-          loading={loadingCV}
+          onClick={downloadCV}
+          loading={loading}
           className="animate-float">Télécharger CV</Button>
         </div>
 

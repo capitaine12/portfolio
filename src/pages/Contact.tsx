@@ -12,19 +12,39 @@ const Contact: React.FC = () => {
   return (
     <section className="relative min-h-screen bg-white px-6 lg:px-24 py-16">
         <SideTitle text="CONTACT" />
-    <div className="flex items-center flex-col gap-4  container mx-auto px-4 py-12">
-        <div className="font-bold text-5xl md:grid-cols-2 ">
-            {Contacts.map((contact) => (
-                <a key={contact.name} href={contact.link} target="_blank" rel="noopener noreferrer" 
-                className="flex items-center space-x-4 transition-colors duration-300 hover:text-gray-600 mb-6">
-                   
-                    <span className="text-xl">{socialIcons[contact.icon]}</span>
-                    <span className="uppercase">{contact.name}</span>
-                </a>
-            ))}
-        </div>
-        <p className="text-lg  text-gray-700 ">Un projet, une idée ou une collaboration ? Discutons-en.</p>
-    </div>
+    <div className="flex flex-col items-center justify-center min-h-[70vh] gap-12">
+
+  <div className="flex flex-col gap-10 text-center lg:text-left">
+    {Contacts.map((contact) => (
+      <a
+        key={contact.name}
+        href={contact.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          group flex items-center gap-6
+          text-4xl md:text-5xl font-bold tracking-wide
+          transition-all duration-300
+          hover:translate-x-2 hover:opacity-80
+        "
+      >
+        <span className="text-2xl text-gray-700 placeholder-opacity-100 group-hover:opacity-100 transition">
+          {socialIcons[contact.icon]}
+        </span>
+
+        <span className="uppercase">
+          {contact.name}
+        </span>
+      </a>
+    ))}
+  </div>
+
+  <p className="text-base md:text-lg text-gray-600 text-center max-w-md">
+    Un projet, une idée ou une collaboration ? Discutons-en.
+  </p>
+
+</div>
+
     </section>
     );
     };
