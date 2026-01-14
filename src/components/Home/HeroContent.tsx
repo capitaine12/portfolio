@@ -44,12 +44,12 @@ export const HeroContent: FC<HeroProps> = ({
     "
   >
     {/* TEXTE */}
-    <div className="flex flex-col gap-2">
-      <span className="text-sm font-semibold">
+    <div className="flex flex-col items-center">
+      <span className="relative -left-24 text-sm font-semibold">
         Je me nomme
       </span>
 
-      <h1 className="font-extrabold leading-none text-[clamp(3rem,12vw,5rem)]">
+      <h1 className="font-extrabold leading-none text-[clamp(3rem,19vw,5rem)]">
         CHEIKH
       </h1>
 
