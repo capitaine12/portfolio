@@ -21,92 +21,71 @@ export const HeroContent: FC<HeroProps> = ({
   return (
     <section className="bg-white">
 
-      {/* MOBILE */}
-      <div className="relative w-full h-[100svh] lg:hidden overflow-hidden">
-        <img
-          src={profile}
-          alt="Cheikh Ndiaye"
-          fetchPriority="high"
-          className="absolute 
-          inset-0 w-full h-full object-cover"
-        />
+     {/* MOBILE */}
+<div className="relative w-full h-[100svh] lg:hidden overflow-hidden">
+  <img
+    src={profile}
+    alt="Cheikh Ndiaye"
+    fetchPriority="high"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
 
-        {/* OVERLAY */}
-        <div
-          className="
+  {/* OVERLAY */}
+  <div
+    className="
       absolute inset-0
-      flex flex-col 
-      align-center
+      flex flex-col
       justify-end
-      bg-black/20
+      bg-black/30
       px-6
-      pb-[clamp(40px,8vh,72px)]
-      text-center
+      pb-[clamp(32px,8vh,64px)]
       text-black
       animate-hero
-    ">
+    "
+  >
+    {/* TEXTE */}
+    <div className="flex flex-col gap-2">
+      <span className="text-sm font-semibold">
+        Je me nomme
+      </span>
 
-          <div className="grid grid-rows-1">
-            <span className="text-sm sm:text-base font-semibold text-left">
-              Je me nomme
-            </span>
+      <h1 className="font-extrabold leading-none text-[clamp(3rem,12vw,5rem)]">
+        CHEIKH
+      </h1>
 
-            <h1
-              className="
-        font-extrabold
-        leading-none
-        text-[clamp(90px,8vw,56px)]
-      ">
-              CHEIKH
-            </h1>
+      <div className="flex items-center gap-3">
+        <span className="bg-black px-3 py-1 text-[11px] font-bold text-white">
+          Développeur frontend & UI / UX
+        </span>
 
-            {/* Badge */}
-            <div className="flex items-center justify-center">
-              <span
-                className="
-        inline-block
-        bg-black
-        px-1
-        py-1
-        text-[11px]
-        sm:text-xs
-        font-bold
-        text-white
-      ">
-                Développeur frontend & UI / UX
-              </span>
-
-              {/* NDIAYE */}
-              <h2
-                className="
-        font-bold
-        text-[clamp(40px,5vw,34px)]
-      ">
-                NDIAYE
-              </h2>
-            </div>
-
-          </div>
-
-          {/* Boutons (inchangés) */}
-          <div className=" space-y-3">
-            <Button
-              variant="primary"
-              icon={<BsArrowRight size={22} />}
-              onClick={onMoreClick}>
-              Voir Plus
-            </Button>
-
-            <Button
-              variant="download"
-              icon={<BsChevronDown size={22} />}
-              onClick={downloadCV}
-              loading={loading}>
-              Télécharger CV
-            </Button>
-          </div>
-        </div>
+        <h2 className="font-bold text-[clamp(1.8rem,6vw,2.6rem)]">
+          NDIAYE
+        </h2>
       </div>
+    </div>
+
+    {/* BOUTONS */}
+    <div className="mt-6 flex flex-col gap-3">
+      <Button
+        variant="primary"
+        icon={<BsArrowRight size={22} />}
+        onClick={onMoreClick}
+      >
+        Voir Plus
+      </Button>
+
+      <Button
+        variant="download"
+        icon={<BsChevronDown size={22} />}
+        onClick={downloadCV}
+        loading={loading}
+      >
+        Télécharger CV
+      </Button>
+    </div>
+  </div>
+</div>
+
       
       {/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */}
       {/*::::::::::::::::::::::::::::: PARTIE DESKTOP :::::::::::::::::::::::::::::::::: */}
