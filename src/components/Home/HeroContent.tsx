@@ -39,6 +39,7 @@ export const HeroContent: FC<HeroProps> = ({
       bg-black/30
       px-6
       pb-[clamp(32px,8vh,64px)]
+      text-black
       animate-hero
     "
   >
@@ -48,7 +49,7 @@ export const HeroContent: FC<HeroProps> = ({
         Je me nomme
       </span>
 
-      <h1 className="font-extrabold text-red-700 leading-none text-[clamp(3rem,12vw,5rem)]">
+      <h1 className="font-extrabold leading-none text-[clamp(3rem,12vw,5rem)]">
         CHEIKH
       </h1>
 
