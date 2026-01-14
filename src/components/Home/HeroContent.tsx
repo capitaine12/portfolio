@@ -19,7 +19,7 @@ export const HeroContent: FC<HeroProps> = ({
 
 
   return (
-    <section className="bg-white">
+    <section >
 
      {/* MOBILE */}
 <div className="relative w-full h-[100svh] lg:hidden overflow-hidden">
@@ -54,7 +54,9 @@ export const HeroContent: FC<HeroProps> = ({
       </h1>
 
       <div className="flex items-center gap-3">
-        <span className="bg-black px-3 py-1 text-[clamp(0.6rem,1.8vw,0.85rem)] whitespace-nowrap font-bold text-white">
+        <span className="bg-black px-3 py-1 
+        text-[clamp(0.6rem,1.8vw,0.85rem)] 
+        whitespace-nowrap font-bold text-white">
           Développeur frontend & UI / UX
         </span>
 
