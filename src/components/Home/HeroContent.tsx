@@ -12,64 +12,107 @@ export const HeroContent: FC<HeroProps> = ({
 }) => {
 
 
- const { downloadCV, loading } = useDownloadCV({
-  fileUrl: cv,
-  fileName: "Cheikh_Ndiaye_CV.pdf",
-})
+  const { downloadCV, loading } = useDownloadCV({
+    fileUrl: cv,
+    fileName: "Cheikh_Ndiaye_CV.pdf",
+  })
 
 
   return (
     <section className="bg-white">
 
       {/* MOBILE */}
-      <div className="relative h-[90vh] w-full lg:hidden">
+      <div className="relative w-full h-[100svh] lg:hidden overflow-hidden">
         <img
           src={profile}
           alt="Cheikh Ndiaye"
-           fetchPriority="high"
-          className="absolute inset-0 h-screen w-full object-cover"
+          fetchPriority="high"
+          className="absolute 
+          inset-0 w-full h-full object-cover"
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 flex flex-col justify-end
-         bg-black/10 px-6 pb-10 text-center  animate-hero text-black">
+        <div
+          className="
+      absolute inset-0
+      flex flex-col 
+      align-center
+      justify-end
+      bg-black/20
+      px-6
+      pb-[clamp(40px,8vh,72px)]
+      text-center
+      text-black
+      animate-hero
+    ">
 
-          <span className="relative left-24 text-lg font-extrabold">
-            Je me nomme
-          </span>
-
-          <h1 className="text-5xl font-extrabold leading-none">
-            CHEIKH
-          </h1>
-
-          <div className="mt-2 flex flex-col items-center gap-2">
-            <span className="bg-black px-3 py-1 text-xs font-bold text-white">
-              Développeur frontend & UI / UX
+          <div className="grid grid-rows-1">
+            <span className="text-sm sm:text-base font-semibold text-left">
+              Je me nomme
             </span>
 
-            <h2 className="text-3xl font-bold">
-              NDIAYE
-            </h2>
+            <h1
+              className="
+        font-extrabold
+        leading-none
+        text-[clamp(90px,8vw,56px)]
+      ">
+              CHEIKH
+            </h1>
+
+            {/* Badge */}
+            <div className="flex items-center justify-center">
+              <span
+                className="
+        inline-block
+        bg-black
+        px-1
+        py-1
+        text-[11px]
+        sm:text-xs
+        font-bold
+        text-white
+      ">
+                Développeur frontend & UI / UX
+              </span>
+
+              {/* NDIAYE */}
+              <h2
+                className="
+        font-bold
+        text-[clamp(40px,5vw,34px)]
+      ">
+                NDIAYE
+              </h2>
+            </div>
+
           </div>
 
-          <Button
-            variant="primary"
-            icon={<BsArrowRight size={25} />}
-            onClick={onMoreClick}
-          >
-            Voir Plus
-          </Button>
-
-          <Button
-          variant="download"
-          icon={<BsChevronDown size={25} />}
-          onClick={downloadCV}
-          loading={loading}
-          ariaLabel="Télécharger mon CV">
-            Télécharger CV
+          {/* Boutons (inchangés) */}
+          <div className=" space-y-3">
+            <Button
+              variant="primary"
+              icon={<BsArrowRight size={22} />}
+              onClick={onMoreClick}>
+              Voir Plus
             </Button>
+
+            <Button
+              variant="download"
+              icon={<BsChevronDown size={22} />}
+              onClick={downloadCV}
+              loading={loading}>
+              Télécharger CV
+            </Button>
+          </div>
         </div>
       </div>
+      
+      {/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */}
+      {/*::::::::::::::::::::::::::::: PARTIE DESKTOP :::::::::::::::::::::::::::::::::: */}
+      {/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */}
+
+
 
       {/* DESKTOP (INCHANGÉ) */}
       <div className="
@@ -99,17 +142,17 @@ export const HeroContent: FC<HeroProps> = ({
             </div>
 
             <Button
-            variant="primary"
-            icon={<BsArrowRight size={25} />}
-            onClick={onMoreClick}>Voir Plus</Button>
+              variant="primary"
+              icon={<BsArrowRight size={25} />}
+              onClick={onMoreClick}>Voir Plus</Button>
 
           </div>
           <Button
-          variant="download"
-          icon={<BsChevronDown size={25} />}
-          onClick={downloadCV}
-          loading={loading}
-          ariaLabel="Télécharger mon CV">
+            variant="download"
+            icon={<BsChevronDown size={25} />}
+            onClick={downloadCV}
+            loading={loading}
+            ariaLabel="Télécharger mon CV">
             Télécharger CV
           </Button>
         </div>
