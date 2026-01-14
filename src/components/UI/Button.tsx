@@ -1,4 +1,4 @@
-import {useState, type FC,} from 'react';
+import type{ FC } from 'react';
 import clsx from 'clsx';
 import type { ButtonProps } from '@/types/types';
 
@@ -14,10 +14,8 @@ const Button: FC<ButtonProps> = ({
   ariaLabel,
   ...props
 }) => {
-  const [error, setError] = useState<string | null>(null);
-
+  const { error } = props
   return (
-
     <button
       {...props}
       disabled={disabled || loading}
@@ -28,7 +26,8 @@ const Button: FC<ButtonProps> = ({
         `btn-${variant}`,
         loading && 'opacity-70 cursor-not-allowed',
         className
-      )}>
+      )}
+    >
       {loading ? (
         <span className="btn-loader">
           <span className="loader" />
@@ -40,7 +39,6 @@ const Button: FC<ButtonProps> = ({
         </span>
       )}
       {error && <span className="btn-error">{error}</span>}
-
     </button>
   );
 };

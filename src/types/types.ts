@@ -66,10 +66,12 @@ export interface Contact{
   link: string;
 }
 
+
 export interface ButtonProps 
 extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'download';
   icon?: ReactNode;
   loading?: boolean;
   ariaLabel?: string;
+  error?: string;
 }
