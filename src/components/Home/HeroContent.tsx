@@ -54,7 +54,7 @@ export const HeroContent: FC<HeroProps> = ({
       </h1>
 
       <div className="flex items-center gap-3">
-        <span className="bg-black px-3 py-1 text-sm font-bold text-white">
+        <span className="bg-black px-3 py-1 text-xs sm:text-sm font-bold text-white">
           Développeur frontend & UI / UX
         </span>
 
