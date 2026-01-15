@@ -54,20 +54,7 @@ const DesignCard: FC<DesignCardProps> = ({ image, title, onClick }) => {
         
         <BsFullscreen className="text-white text-4xl sm:text-5xl" />
       </div>
-      {/* 
-<div
-  className="
-    absolute inset-0
-    bg-black/20
-    flex items-center justify-center
-    opacity-100
-    sm:opacity-0 sm:group-hover:opacity-100
-    transition-opacity
-  "
->
-  <BsFullscreen className="text-white text-3xl sm:text-5xl" />
-</div>
- */}
+      
     </div>
   );
 };

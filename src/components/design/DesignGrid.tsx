@@ -6,11 +6,13 @@ import { useDesignModal } from "@/hooks/useDesignModal";
 import { useEffect } from "react";
 
 const breakpointColumnsObj = {
-  default: 4,
+  default: 3,   // desktop large
   1280: 3,
-  1024: 2,
-  640: 1,
+  1024: 2,      // tablette paysage
+  768: 2,       // tablette portrait
+  640: 1,       // mobile
 };
+
 
 export default function DesignGrid() {
   const images = designs.map(d => d.image);
@@ -39,10 +41,11 @@ useEffect(() => {
   return (
     <>
       <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="flex gap-6"
-        columnClassName="flex flex-col gap-6"
-      >
+  breakpointCols={breakpointColumnsObj}
+  className="flex gap-4 sm:gap-6"
+  columnClassName="flex flex-col gap-4 sm:gap-6 will-change-transform"
+>
+
         {designs.map((design, index) => (
           <DesignCard
             key={design.id}
