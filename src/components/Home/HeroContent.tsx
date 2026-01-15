@@ -22,7 +22,7 @@ export const HeroContent: FC<HeroProps> = ({
     <section >
 
      {/* MOBILE */}
-<div className="relative w-full h-[100svh] lg:hidden overflow-hidden">
+<div className="relative w-full h-[106svh] lg:hidden overflow-hidden">
   <img
     src={profile}
     alt="Cheikh Ndiaye"
