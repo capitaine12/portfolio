@@ -42,5 +42,5 @@ const Button: FC<ButtonProps> = ({
     </button>
   );
 };
-
+/*  */
 export default Button;
