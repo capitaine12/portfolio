@@ -78,8 +78,7 @@ extends ButtonHTMLAttributes<HTMLButtonElement> {
 /* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
 /* :::::::::::::::::::::::::::::::Swipe handling :::::::: :::::::::::::: */
 
-export type UseSwipeProps = {
-  onSwipeLeft?: () => void;
-  onSwipeRight?: () => void;
-  minDistance?: number;
+export type UseSwipeDragProps = {
+  onSwipeLeft: () => void;
+  onSwipeRight: () => void;
 };

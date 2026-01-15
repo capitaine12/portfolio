@@ -1,4 +1,5 @@
-import { useSwipe } from "@/hooks/useSwipe";
+
+import { useSwipeDrag } from "@/hooks/useSwipe";
 import type { DesignModalProps } from "@/types/types";
 import { type FC, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight, BsFullscreenExit } from "react-icons/bs";
@@ -13,6 +14,7 @@ const DesignModal: FC<DesignModalProps> = ({
   onNext,
 }) => {
 
+//? Bloquer le scroll de l'arrière-plan
   useEffect(() => {
   document.body.style.overflow = "hidden";
   return () => {
@@ -20,10 +22,20 @@ const DesignModal: FC<DesignModalProps> = ({
   };
 }, []);
 
-const { swipeHandlers } = useSwipe({
-  onSwipeLeft: onNext,
-  onSwipeRight: onPrev,
-});
+// Swipe handling
+const { swipeHandlers, swipeStyle, isDragging } =
+  useSwipeDrag({
+    onSwipeLeft: onNext,
+    onSwipeRight: onPrev,
+  });
+// Préchargement de l'image suivante
+useEffect(() => {
+  const nextIndex =
+    (currentIndex + 1) % images.length;
+
+  const img = new Image();
+  img.src = images[nextIndex];
+}, [currentIndex, images]);
 
 
   // Navigation clavier
@@ -46,6 +58,8 @@ const { swipeHandlers } = useSwipe({
         bg-black/70
         flex items-center justify-center
         px-4
+        animate-modal
+        
       "
     >
       <div
@@ -82,19 +96,26 @@ const { swipeHandlers } = useSwipe({
 
         {/* IMAGE */}
         <img
-          src={images[currentIndex]}
-          alt={title}
-          {...swipeHandlers}
-          className="
-          max-h-[72svh]
-          sm:max-h-[80vh]
-          max-w-full
-          object-contain
-          rounded-lg
-          will-change-transform
-          select-none
-          touch-pan-y
-          "/>
+  src={images[currentIndex]}
+  alt={title}
+  {...swipeHandlers}
+  style={{
+    ...swipeStyle,
+    opacity: isDragging ? 0.9 : 1,
+  }}
+  draggable={false}
+  className="
+    max-h-[72svh]
+    sm:max-h-[80vh]
+    max-w-full
+    object-contain
+    rounded-lg
+    will-change-transform
+    select-none
+    touch-pan-y
+  "
+/>
+
 
 
         {/* RIGHT */}
@@ -121,7 +142,7 @@ const { swipeHandlers } = useSwipe({
       <div
   className="
     absolute bottom-3
-    text-white text-xs sm:text-sm
+    text-white text-sm sm:text-sm
     opacity-80
     text-center
     px-4

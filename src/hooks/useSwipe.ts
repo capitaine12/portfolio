@@ -1,42 +1,54 @@
-import { useRef } from "react";
-import type { UseSwipeProps } from "@/types/types";
+import type { UseSwipeDragProps } from "@/types/types";
+import { useRef, useState } from "react";
 
-export const useSwipe = ({
+
+export const useSwipeDrag = ({
   onSwipeLeft,
   onSwipeRight,
-  minDistance = 50,
-}: UseSwipeProps) => {
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
+}: UseSwipeDragProps) => {
+  const startX = useRef<number | null>(null);
+  const containerWidth = useRef(0);
 
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.targetTouches[0].clientX;
+  const [translateX, setTranslateX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const onTouchStart = (
+    e: React.TouchEvent<HTMLElement>
+  ) => {
+    startX.current = e.touches[0].clientX;
+    containerWidth.current = e.currentTarget.offsetWidth;
+    setIsDragging(true);
   };
 
-  const onTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.targetTouches[0].clientX;
+  const onTouchMove = (
+    e: React.TouchEvent<HTMLElement>
+  ) => {
+    if (startX.current === null) return;
+
+    const currentX = e.touches[0].clientX;
+    const delta = currentX - startX.current;
+
+    const resistance = 0.4;
+    setTranslateX(delta * resistance);
   };
 
   const onTouchEnd = () => {
-    if (
-      touchStartX.current === null ||
-      touchEndX.current === null
-    )
-      return;
+    if (startX.current === null) return;
 
-    const distance =
-      touchStartX.current - touchEndX.current;
+    const threshold = containerWidth.current * 0.25;
 
-    if (Math.abs(distance) < minDistance) return;
-
-    if (distance > 0) {
-      onSwipeLeft?.();
+    if (translateX < -threshold) {
+      setTranslateX(-containerWidth.current);
+      setTimeout(onSwipeLeft, 200);
+    } else if (translateX > threshold) {
+      setTranslateX(containerWidth.current);
+      setTimeout(onSwipeRight, 200);
     } else {
-      onSwipeRight?.();
+      setTranslateX(0);
     }
 
-    touchStartX.current = null;
-    touchEndX.current = null;
+    setIsDragging(false);
+    startX.current = null;
   };
 
   return {
@@ -45,5 +57,12 @@ export const useSwipe = ({
       onTouchMove,
       onTouchEnd,
     },
+    swipeStyle: {
+      transform: `translateX(${translateX}px)`,
+      transition: isDragging
+        ? "none"
+        : "transform 0.3s ease-out",
+    },
+    isDragging,
   };
 };
