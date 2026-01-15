@@ -74,3 +74,12 @@ extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaLabel?: string;
   error?: string;
 }
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+/* :::::::::::::::::::::::::::::::Swipe handling :::::::: :::::::::::::: */
+
+export type UseSwipeProps = {
+  onSwipeLeft?: () => void;
+  onSwipeRight?: () => void;
+  minDistance?: number;
+};

@@ -1,3 +1,4 @@
+import { useSwipe } from "@/hooks/useSwipe";
 import type { DesignModalProps } from "@/types/types";
 import { type FC, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight, BsFullscreenExit } from "react-icons/bs";
@@ -18,6 +19,12 @@ const DesignModal: FC<DesignModalProps> = ({
     document.body.style.overflow = "";
   };
 }, []);
+
+const { swipeHandlers } = useSwipe({
+  onSwipeLeft: onNext,
+  onSwipeRight: onPrev,
+});
+
 
   // Navigation clavier
   useEffect(() => {
@@ -77,15 +84,17 @@ const DesignModal: FC<DesignModalProps> = ({
         <img
           src={images[currentIndex]}
           alt={title}
+          {...swipeHandlers}
           className="
-    max-h-[72svh]
-    sm:max-h-[80vh]
-  max-w-full
-  object-contain
-  rounded-lg
-  will-change-transform
-  select-none
-"/>
+          max-h-[72svh]
+          sm:max-h-[80vh]
+          max-w-full
+          object-contain
+          rounded-lg
+          will-change-transform
+          select-none
+          touch-pan-y
+          "/>
 
 
         {/* RIGHT */}
