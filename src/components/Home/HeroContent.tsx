@@ -27,7 +27,8 @@ export const HeroContent: FC<HeroProps> = ({
     src={profile}
     alt="Cheikh Ndiaye"
     fetchPriority="high"
-    className="absolute inset-0 w-full h-full object-cover"
+    className="absolute inset-0 w-full h-full     object-[center_20%]
+     "
   />
 
   {/* OVERLAY */}
