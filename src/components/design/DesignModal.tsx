@@ -12,7 +12,14 @@ const DesignModal: FC<DesignModalProps> = ({
   onNext,
 }) => {
 
-  // 🎹 Navigation clavier
+  useEffect(() => {
+  document.body.style.overflow = "hidden";
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, []);
+
+  // Navigation clavier
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") onPrev();
@@ -43,21 +50,26 @@ const DesignModal: FC<DesignModalProps> = ({
           onClick={onClose}
           className="absolute -top-12 right-0 text-white text-3xl"
         >
-           <BsFullscreenExit />
+          <BsFullscreenExit />
         </button>
 
         {/* LEFT */}
         {currentIndex > 0 && (
-          <button
-            onClick={onPrev}
-            className="
-              absolute left-0 md:-left-14
-              text-white text-4xl
-              hover:scale-110 transition
-            "
-          >
-            <BsChevronLeft />
-          </button>
+            <button
+    onClick={onPrev}
+    className="
+      absolute left-2 sm:-left-14
+      top-1/2 -translate-y-1/2
+      text-white text-4xl
+      p-2
+      bg-black/40
+      rounded-full
+      backdrop-blur
+      active:scale-95
+    "
+  >
+    <BsChevronLeft />
+  </button>
         )}
 
         {/* IMAGE */}
@@ -65,32 +77,49 @@ const DesignModal: FC<DesignModalProps> = ({
           src={images[currentIndex]}
           alt={title}
           className="
-  max-h-[80vh]
+    max-h-[72svh]
+    sm:max-h-[80vh]
   max-w-full
   object-contain
   rounded-lg
   will-change-transform
+  select-none
 "/>
+
 
         {/* RIGHT */}
         {currentIndex < images.length - 1 && (
           <button
-            onClick={onNext}
-            className="
-              absolute right-0 md:-right-14
-              text-white text-4xl
-              hover:scale-110 transition
-            "
-          >
-            <BsChevronRight />
-          </button>
+    onClick={onNext}
+    className="
+      absolute right-2 sm:-right-14
+      top-1/2 -translate-y-1/2
+      text-white text-4xl
+      p-2
+      bg-black/40
+      rounded-full
+      backdrop-blur
+      active:scale-95
+    "
+  >
+    <BsChevronRight />
+  </button>
         )}
       </div>
 
       {/* FOOTER */}
-      <div className="absolute bottom-6 text-white text-sm opacity-80">
-        {title} • {date} • {currentIndex + 1}/{images.length}
-      </div>
+      <div
+  className="
+    absolute bottom-3
+    text-white text-xs sm:text-sm
+    opacity-80
+    text-center
+    px-4
+  "
+>
+  {title} • {date} • {currentIndex + 1}/{images.length}
+</div>
+
     </div>
   );
 };
