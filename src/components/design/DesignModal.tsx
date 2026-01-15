@@ -1,7 +1,8 @@
-import { useSwipeDrag } from "@/hooks/useSwipe";
 import type { DesignModalProps } from "@/types/types";
 import { type FC, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight, BsFullscreenExit } from "react-icons/bs";
+import { useSwipePreview } from "@/hooks/useSwipePreview";
+import { useSwipe } from "@/hooks/useSwipe";
 
 const DesignModal: FC<DesignModalProps> = ({
   images,
@@ -22,15 +23,13 @@ const DesignModal: FC<DesignModalProps> = ({
 }, []);
 
 // Swipe handling
-const {
-  swipeHandlers,
-  swipeStyle,
-  isDragging,
-  resetPosition,
-} = useSwipeDrag({
+const { swipeHandlers } = useSwipe({
   onSwipeLeft: onNext,
   onSwipeRight: onPrev,
 });
+
+const { previewHandlers, previewStyle } = useSwipePreview();
+
 
 // Préchargement de l'image suivante
 useEffect(() => {
@@ -40,10 +39,6 @@ useEffect(() => {
   const img = new Image();
   img.src = images[nextIndex];
 }, [currentIndex, images]);
-// Reset position after changing image
-useEffect(() => {
-  resetPosition();
-}, [currentIndex, resetPosition]);
 
 
   // Navigation clavier
@@ -66,10 +61,7 @@ useEffect(() => {
         bg-black/70
         flex items-center justify-center
         px-4
-        animate-modal
-        
-      "
-    >
+        animate-modal">
       <div
         onClick={(e) => e.stopPropagation()}
         className="relative max-w-5xl w-full flex items-center justify-center"
@@ -96,32 +88,35 @@ useEffect(() => {
       rounded-full
       backdrop-blur
       active:scale-95
-    "
-  >
+    ">
     <BsChevronLeft />
   </button>
         )}
 
         {/* IMAGE */}
-        <img
-        src={images[currentIndex]}
-        alt={title}
-        {...swipeHandlers}
-        style={{...swipeStyle,
-          opacity: isDragging ? 0.9 : 1,
-          transform: `${swipeStyle.transform} 
-          scale(${isDragging ? 0.98 : 1})`,
-        }}
-        draggable={false}
-        className="
-        max-h-[72svh]
-        sm:max-h-[80vh]
-        max-w-full
-        object-contain
-        rounded-lg
-        will-change-transform
-        select-none
-        touch-pan-y"/>
+       <div
+  {...swipeHandlers}
+  {...previewHandlers}
+  style={previewStyle}
+  className="will-change-transform flex justify-center"
+>
+  <img
+    src={images[currentIndex]}
+    alt={title}
+    draggable={false}
+    className="
+      max-h-[72svh]
+      sm:max-h-[80vh]
+      max-w-full
+      object-contain
+      rounded-lg
+      select-none
+      touch-pan-y
+    "
+  />
+</div>
+
+
 
         {/* RIGHT */}
         {currentIndex < images.length - 1 && (
@@ -158,5 +153,5 @@ useEffect(() => {
     </div>
   );
 };
-
 export default DesignModal;
+
