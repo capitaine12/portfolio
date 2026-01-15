@@ -67,7 +67,7 @@ export const HeroContent: FC<HeroProps> = ({
     </div>
 
     {/* BOUTONS */}
-    <div className="mt-6 flex flex-col gap-3">
+    <div className="mt-3 flex flex-col gap-3">
       <Button
         variant="primary"
         icon={<BsArrowRight size={22} />}
