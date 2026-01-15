@@ -58,6 +58,7 @@ const DesignModal: FC<DesignModalProps> = ({
             <button
     onClick={onPrev}
     className="
+    z-[2]
       absolute left-2 sm:-left-14
       top-1/2 -translate-y-1/2
       text-white text-4xl
