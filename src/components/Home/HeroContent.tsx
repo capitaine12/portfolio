@@ -22,7 +22,7 @@ export const HeroContent: FC<HeroProps> = ({
     <section >
 
      {/* MOBILE */}
-<div className="relative w-full h-[106svh] lg:hidden overflow-hidden">
+<div className="relative w-full h-[107svh] lg:hidden overflow-hidden">
   <img
     src={profile}
     alt="Cheikh Ndiaye"
@@ -67,7 +67,7 @@ export const HeroContent: FC<HeroProps> = ({
     </div>
 
     {/* BOUTONS */}
-    <div className="mt-3 flex flex-col gap-3">
+    <div className=" flex flex-col gap-3">
       <Button
         variant="primary"
         icon={<BsArrowRight size={22} />}
