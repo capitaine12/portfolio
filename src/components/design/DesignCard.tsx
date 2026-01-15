@@ -39,18 +39,20 @@ const DesignCard: FC<DesignCardProps> = ({ image, title, onClick }) => {
         `}
       />
 
-      {/* Overlay hover */}
-      <div
-        className="
-          absolute inset-0 bg-black/30
-          opacity-0 group-hover:opacity-100
-          flex items-center justify-center
-          transition-opacity
-        "
-      >
-        
-        <BsFullscreen className="text-white text-5xl" />
-      </div>
+{/* Overlay */}
+<div
+  className="
+    absolute inset-0
+    bg-black/20
+    flex items-center justify-center
+    opacity-100
+    sm:opacity-0 sm:group-hover:opacity-100
+    transition-opacity
+  "
+>
+  <BsFullscreen className="text-white text-3xl sm:text-5xl" />
+</div>
+
     </div>
   );
 };

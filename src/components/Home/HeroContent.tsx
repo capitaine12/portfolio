@@ -27,8 +27,8 @@ export const HeroContent: FC<HeroProps> = ({
     src={profile}
     alt="Cheikh Ndiaye"
     fetchPriority="high"
-    className="absolute inset-0 w-full h-full     object-[center_20%]
-     "
+    className="absolute inset-0 w-full h-full object-[center_20%]
+     " /* au besion object-cover */
   />
 
   {/* OVERLAY */}
@@ -39,7 +39,7 @@ export const HeroContent: FC<HeroProps> = ({
       justify-end
       bg-black/30
       px-6
-      pb-[clamp(32px,8vh,64px)]
+      pb-[calc(clamp(32px,6vh,64px)+env(safe-area-inset-bottom))]
       text-black
       animate-hero
     "
