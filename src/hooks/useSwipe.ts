@@ -9,6 +9,8 @@ export const useSwipeDrag = ({
   const startX = useRef<number | null>(null);
   const containerWidth = useRef(0);
 
+  
+
   const [translateX, setTranslateX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -49,7 +51,14 @@ export const useSwipeDrag = ({
 
     setIsDragging(false);
     startX.current = null;
+
+  
+
   };
+  
+  const resetPosition = () => {
+  setTranslateX(0);
+};
 
   return {
     swipeHandlers: {
@@ -64,5 +73,6 @@ export const useSwipeDrag = ({
         : "transform 0.3s ease-out",
     },
     isDragging,
+    resetPosition,
   };
 };

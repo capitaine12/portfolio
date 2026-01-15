@@ -1,4 +1,3 @@
-
 import { useSwipeDrag } from "@/hooks/useSwipe";
 import type { DesignModalProps } from "@/types/types";
 import { type FC, useEffect } from "react";
@@ -13,7 +12,7 @@ const DesignModal: FC<DesignModalProps> = ({
   onPrev,
   onNext,
 }) => {
-
+  
 //? Bloquer le scroll de l'arrière-plan
   useEffect(() => {
   document.body.style.overflow = "hidden";
@@ -23,11 +22,16 @@ const DesignModal: FC<DesignModalProps> = ({
 }, []);
 
 // Swipe handling
-const { swipeHandlers, swipeStyle, isDragging } =
-  useSwipeDrag({
-    onSwipeLeft: onNext,
-    onSwipeRight: onPrev,
-  });
+const {
+  swipeHandlers,
+  swipeStyle,
+  isDragging,
+  resetPosition,
+} = useSwipeDrag({
+  onSwipeLeft: onNext,
+  onSwipeRight: onPrev,
+});
+
 // Préchargement de l'image suivante
 useEffect(() => {
   const nextIndex =
@@ -36,6 +40,10 @@ useEffect(() => {
   const img = new Image();
   img.src = images[nextIndex];
 }, [currentIndex, images]);
+// Reset position after changing image
+useEffect(() => {
+  resetPosition();
+}, [currentIndex, resetPosition]);
 
 
   // Navigation clavier
@@ -96,27 +104,24 @@ useEffect(() => {
 
         {/* IMAGE */}
         <img
-  src={images[currentIndex]}
-  alt={title}
-  {...swipeHandlers}
-  style={{
-    ...swipeStyle,
-    opacity: isDragging ? 0.9 : 1,
-  }}
-  draggable={false}
-  className="
-    max-h-[72svh]
-    sm:max-h-[80vh]
-    max-w-full
-    object-contain
-    rounded-lg
-    will-change-transform
-    select-none
-    touch-pan-y
-  "
-/>
-
-
+        src={images[currentIndex]}
+        alt={title}
+        {...swipeHandlers}
+        style={{...swipeStyle,
+          opacity: isDragging ? 0.9 : 1,
+          transform: `${swipeStyle.transform} 
+          scale(${isDragging ? 0.98 : 1})`,
+        }}
+        draggable={false}
+        className="
+        max-h-[72svh]
+        sm:max-h-[80vh]
+        max-w-full
+        object-contain
+        rounded-lg
+        will-change-transform
+        select-none
+        touch-pan-y"/>
 
         {/* RIGHT */}
         {currentIndex < images.length - 1 && (
@@ -131,8 +136,7 @@ useEffect(() => {
       rounded-full
       backdrop-blur
       active:scale-95
-    "
-  >
+    ">
     <BsChevronRight />
   </button>
         )}
