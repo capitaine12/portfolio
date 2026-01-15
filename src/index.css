@@ -81,7 +81,11 @@
 /* DOWNLOAD BUTTON */
 
 .btn-download {
-  @apply border-none text-black max-w-sm mx-auto;
+  @apply 
+  border-none text-black 
+  flex items-center 
+  justify-center 
+  max-w-sm mx-auto;
 }
 
 @screen lg {
