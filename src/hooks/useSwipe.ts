@@ -17,7 +17,7 @@ export const useSwipe = ({
     touchEndX.current = e.targetTouches[0].clientX;
   };
 
-  const onTouchEnd = () => {
+  const onTouchEnd = (e: unknown) => {
     if (
       touchStartX.current === null ||
       touchEndX.current === null

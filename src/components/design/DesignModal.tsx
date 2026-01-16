@@ -105,6 +105,7 @@ useEffect(() => {
       object-contain
       rounded-lg
       select-none
+      touch-none
       touch-pan-y
       flex justify-center
     "

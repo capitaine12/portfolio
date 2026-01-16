@@ -21,35 +21,36 @@ const ProjectModal = ({ project, onClose }: Props) => {
     setIndex((i) => (i === project.images.length - 1 ? 0 : i + 1));
   };
 
- const { swipeHandlers } = useSwipe({
-  onSwipeLeft: next,
-  onSwipeRight: prev,
-});
 
-const {
-  previewHandlers,
-  previewStyle,
-  resetPreview,
-} = useSwipePreview();
+  const {
+    previewHandlers,
+    previewStyle,
+    resetPreview,
+  } = useSwipePreview();
 
-
-useEffect(() => {
-  resetPreview();
-}, [index, resetPreview]);
+  const { swipeHandlers } = useSwipe({
+    onSwipeLeft: next,
+    onSwipeRight: prev,
+  });
 
 
-//? Bloquer le scroll de l'arrière-plan
   useEffect(() => {
-  document.body.style.overflow = "hidden";
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, []);
-  
+    resetPreview();
+  }, [index, resetPreview]);
+
+
+  //? Bloquer le scroll de l'arrière-plan
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-  <div className="absolute inset-0 bg-black/60 animate-overlay" onClick={onClose} />
-  <div className="relative bg-white w-full max-w-5xl rounded-2xl overflow-hidden animate-modal z-10">
+      <div className="absolute inset-0 bg-black/60 animate-overlay" onClick={onClose} />
+      <div className="relative bg-white w-full max-w-5xl rounded-2xl overflow-hidden animate-modal z-10">
 
         {/* Close */}
         <button
@@ -66,79 +67,93 @@ useEffect(() => {
             {/* Slider */}
             <div className="relative rounded-xl overflow-hidden ">
               <img
-                key={project.images[index]}
                 src={project.images[index]}
                 alt={project.title}
-                {...swipeHandlers}
-                {...previewHandlers}
-                style={previewStyle}
                 draggable={false}
-                className="
-                 w-full
-                 h-[280px]
-                 sm:h-[340px]
-                 lg:h-[390px]
-                 object-contain
-                 transition-transform 
-                 duration-300
-                 relative rounded-xl 
-                 overflow-hidden
-                 touch-pan-y
-                 will-change-transform
-                 "/>
-                
-              {project.images.length > 1 && (
-  <>
-    <button
-      onClick={prev}
-      className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full px-1 py-1 shadow"
-    >
-      <BsChevronCompactLeft size={20} />
-    </button>
 
-    <button
-      onClick={next}
-      className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full px-1 py-1 shadow"
-    >
-      <BsChevronCompactRight size={20} />
-    </button>
-  </>
-)}
+                onTouchStart={(e) => {
+                  previewHandlers.onTouchStart(e);
+                  swipeHandlers.onTouchStart(e);
+                }}
+
+                onTouchMove={(e) => {
+                  previewHandlers.onTouchMove(e);
+                  swipeHandlers.onTouchMove(e);
+                }}
+
+                onTouchEnd={(e) => {
+                  previewHandlers.onTouchEnd(e);
+                  swipeHandlers.onTouchEnd(e);
+                }}
+
+                style={previewStyle}
+
+                className="
+                w-full
+                h-[280px]
+                sm:h-[340px]
+                lg:h-[390px]
+                object-contain
+                rounded-xl
+                select-none
+                touch-none
+                touch-pan-y
+                will-change-transform "
+              />
+
+
+              {project.images.length > 1 && (
+                <>
+                  <button
+                    onClick={prev}
+                    className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full px-1 py-1 shadow"
+                  >
+                    <BsChevronCompactLeft size={20} />
+                  </button>
+
+                  <button
+                    onClick={next}
+                    className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full px-1 py-1 shadow"
+                  >
+                    <BsChevronCompactRight size={20} />
+                  </button>
+                </>
+              )}
 
             </div>
-{/* Thumbnails */}
+            {/* Thumbnails */}
 
-<div className="hidden lg:flex gap-4 mt-6 overflow-x-auto pb-2 scrollbar-hide">
-  {project.images.map((img, i) => {
-    const active = i === index;
+            <div className="hidden lg:flex gap-4 mt-6 overflow-x-auto pb-2 scrollbar-hide">
+              {project.images.map((img, i) => {
+                const active = i === index;
 
-    return (
-      <div
-        key={img}
-        onClick={() => setIndex(i)}
-        className={`
+                return (
+                  <div
+                    key={img}
+                    onClick={() => setIndex(i)}
+                    className={`
           relative shrink-0 rounded-xl overflow-hidden
           transition-all duration-300
           ${active
-            ? "ring-2 ring-black scale-105"
-            : "opacity-60 hover:opacity-100 hover:scale-105"
-          }
+                        ? "ring-2 ring-black scale-105"
+                        : "opacity-60 hover:opacity-100 hover:scale-105"
+                      }
         `}
-      >
-        <img
-          src={img}
-          alt={project.title}
-          className="w-32 h-16 object-cover"
-        />
+                  >
+                    <img
+                      src={img}
+                      alt={project.title}
+                      className="w-32 h-16 object-cover"
+                    />
 
-        {/* Overlay active */}
-        {active && (
-          <span className="absolute inset-0 ring-1 ring-white/40 rounded-xl pointer-events-none" />
-        )}
-      </div>
-    );
-  })}
-</div>
+                    {/* Overlay active */}
+                    {active && (
+                      <span className="absolute inset-0 ring-1 ring-white/40 rounded-xl pointer-events-none" />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
 
           </div>
 
@@ -162,7 +177,7 @@ useEffect(() => {
                   rounded-full border-2 border-black text-sm 
                   font-medium hover:bg-black 
                   md:w-auto hover:text-white transition">
-                  
+
                   <span>Lien du site </span> <BsArrowRight size={25} />
                 </a>
               ) : (
