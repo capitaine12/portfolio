@@ -33,7 +33,7 @@ const ProjectModal = ({ project, onClose }: Props) => {
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-2xl bg-gray-200 border rounded-full p-2 opacity-60 hover:opacity-100">
+          className="absolute z-[2] top-5 right-5 text-2xl bg-gray-200 border rounded-full p-2 opacity-60 hover:opacity-100">
           <BsFullscreenExit />
         </button>
 
