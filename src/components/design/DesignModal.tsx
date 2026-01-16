@@ -22,6 +22,7 @@ const DesignModal: FC<DesignModalProps> = ({
   };
 }, []);
 
+
 const { handlers, style } = useSwipeGallery({
   onSwipeLeft: onNext,
   onSwipeRight: onPrev,

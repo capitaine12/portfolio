@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Project } from "@/types/types";
 import { BsArrowRight, BsChevronCompactLeft, BsChevronCompactRight, BsFullscreenExit } from "react-icons/bs";
+import { useSwipe } from "@/hooks/useSwipe";
 
 type Props = {
   project: Project;
@@ -18,6 +19,12 @@ const ProjectModal = ({ project, onClose }: Props) => {
     setIndex((i) => (i === project.images.length - 1 ? 0 : i + 1));
   };
 
+ const { swipeHandlers } = useSwipe({
+  onSwipeLeft: next,
+  onSwipeRight: prev,
+});
+
+  
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
   <div className="absolute inset-0 bg-black/60 animate-overlay" onClick={onClose} />
@@ -30,7 +37,8 @@ const ProjectModal = ({ project, onClose }: Props) => {
           <BsFullscreenExit />
         </button>
 
-        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 p-8">
+        <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr_1fr] gap-6 p-4 lg:p-8">
+
 
           {/* LEFT – VISUAL */}
           <div className="flex flex-col">
@@ -40,31 +48,41 @@ const ProjectModal = ({ project, onClose }: Props) => {
                 key={project.images[index]}
                 src={project.images[index]}
                 alt={project.title}
+                {...swipeHandlers}
+                draggable={false}
                 className="
-                w-full h-[390px] object-contain
-                transition-all duration-500 ease-in-out
-                animate-fade"/>
+                 w-full
+                 h-[280px]
+                 sm:h-[340px]
+                 lg:h-[390px]
+                 object-contain
+                 transition-transform 
+                 duration-300
+                 relative rounded-xl overflow-hidden touch-pan-y
+                 "/>
+                
               {project.images.length > 1 && (
-                <>
-                  <button
-                    onClick={prev}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full px-1 py-1 shadow"
-                  >
-                    <BsChevronCompactLeft size={20} />
-                  </button>
+  <>
+    <button
+      onClick={prev}
+      className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full px-1 py-1 shadow"
+    >
+      <BsChevronCompactLeft size={20} />
+    </button>
 
-                  <button
-                    onClick={next}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full px-1 py-1 shadow"
-                  >
-                    <BsChevronCompactRight size={20} />
-                  </button>
-                </>
-              )}
+    <button
+      onClick={next}
+      className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 rounded-full px-1 py-1 shadow"
+    >
+      <BsChevronCompactRight size={20} />
+    </button>
+  </>
+)}
+
             </div>
 {/* Thumbnails */}
 
-<div className="flex gap-4 mt-6 overflow-x-auto pb-2 scrollbar-hide">
+<div className="hidden lg:flex gap-4 mt-6 overflow-x-auto pb-2 scrollbar-hide">
   {project.images.map((img, i) => {
     const active = i === index;
 
@@ -99,7 +117,8 @@ const ProjectModal = ({ project, onClose }: Props) => {
           </div>
 
           {/* RIGHT – INFOS */}
-          <div className="flex flex-col md:p-8 gap-6 h-96 w-4/5 mx-auto">
+          <div className="flex flex-col gap-5 px-2 lg:p-8 lg:h-96 lg:w-4/5 lg:mx-auto">
+
             <h2 className="text-3xl font-bold">
               {project.title}
             </h2>
