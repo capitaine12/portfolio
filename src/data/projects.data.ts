@@ -37,7 +37,7 @@ export const projects: Project[] = [
       parainage3,
       parainage4,
     ],
-    stacks: ["html", "css", "javascript"],
+    stacks: ["javascript" , "html", "css"],
     link: "https://humm-niam.com",
   },
     {
@@ -55,7 +55,7 @@ export const projects: Project[] = [
       cxd5,
       cxd6,
     ],
-    stacks: ["tailwind", "laravel"],
+    stacks: ["laravel" , "tailwind" ],
   },
       {
     id: 3,
