@@ -8,9 +8,9 @@ const Navbar: React.FC = () => {
     <header className="w-full bg-white sticky top-0 z-50 shadow-sm">
       <nav className="container mx-auto flex items-center justify-around py-4 px-4">
 
-        <div className="text-sm font-bold tracking-widest uppercase">
-          Logo
-        </div>
+        <h1 className="text-sm font-bold tracking-widest uppercase">
+          Cheikh Ndaiye
+        </h1>
 
         <ul className="hidden md:flex text-black font-bold gap-10 text-sm tracking-widest uppercase">
           {navItems.map((item: NavItem) => (
