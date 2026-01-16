@@ -6,7 +6,7 @@ import { navItems } from "@/data/LinkItems";
 const Navbar: React.FC = () => {
   return (
     <header className="w-full bg-white sticky top-0 z-50 shadow-sm">
-      <nav className="container mx-auto flex items-center justify-around py-4 px-4">
+      <nav className="container mx-auto flex items-center justify-between sm:justify-around lg:justify-around py-4 px-4">
 
         <Link to={"/"} className="text-base
         sm:opacity-70 
@@ -35,9 +35,9 @@ const Navbar: React.FC = () => {
           ))}
         </ul>
 
-        <button className="md:hidden text-xs uppercase">
-          Menu
-        </button>
+        <span className="md:hidden text-xs uppercase">
+          Design
+        </span>
       </nav>
     </header>
   );
