@@ -83,8 +83,9 @@ export function useSwipePreview(): SwipePreviewReturn {
     previewStyle: {
       transform: `translateX(${translateX}px)`,
       transition: isDragging
-        ? "none"
-        : "transform 280ms cubic-bezier(.22,.61,.36,1)",
+      ? "none"
+      : "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
+
       willChange: "transform",
     },
 

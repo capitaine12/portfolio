@@ -101,24 +101,28 @@ const ProjectModal = ({ project, onClose }: Props) => {
                 will-change-transform "
               />
 {/* Pagination mobile */}
-<div className="flex lg:hidden justify-center gap-2 mb-3">
+<div className="flex lg:hidden justify-center gap-3 mt-3">
   {project.images.map((_, i) => {
     const active = i === index;
 
     return (
-      <span
+      <button
         key={i}
+        onClick={() => setIndex(i)}
+        aria-label={`Image ${i + 1}`}
         className={`
-          h-2 w-2 rounded-full transition-all duration-300
+          h-2.5 w-2.5 rounded-full
+          transition-all duration-300 ease-out
           ${active
             ? "bg-black scale-125"
-            : "bg-black/30"
+            : "bg-black/30 active:scale-110"
           }
         `}
       />
     );
   })}
 </div>
+
 
 
               {project.images.length > 1 && (
