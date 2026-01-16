@@ -100,6 +100,25 @@ const ProjectModal = ({ project, onClose }: Props) => {
                 touch-pan-y
                 will-change-transform "
               />
+{/* Pagination mobile */}
+<div className="flex lg:hidden justify-center gap-2 mt-3">
+  {project.images.map((_, i) => {
+    const active = i === index;
+
+    return (
+      <span
+        key={i}
+        className={`
+          h-2 w-2 rounded-full transition-all duration-300
+          ${active
+            ? "bg-black scale-125"
+            : "bg-black/30"
+          }
+        `}
+      />
+    );
+  })}
+</div>
 
 
               {project.images.length > 1 && (
