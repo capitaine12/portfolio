@@ -12,7 +12,7 @@ const MobileBottomNav = () => {
               className={({ isActive }) =>
                 `flex flex-col items-center gap-1 text-xs ${
                   isActive
-                    ? "opacity-100 underline-offset-[-43px] underline decoration-2"
+                    ? "opacity-100 underline-offset-[-44px] underline decoration-2"
                     : "opacity-70"
                 }`
               }
