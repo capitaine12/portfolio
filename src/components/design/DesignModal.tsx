@@ -1,4 +1,4 @@
-import { useSwipeGallery } from "@/hooks/useSwipePreview";
+import { useSwipeGallery } from "@/hooks/useSwipeGallery";
 import type { DesignModalProps } from "@/types/types";
 import { type FC, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight, BsFullscreenExit } from "react-icons/bs";

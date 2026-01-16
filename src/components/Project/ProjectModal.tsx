@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Project } from "@/types/types";
 import { BsArrowRight, BsChevronCompactLeft, BsChevronCompactRight, BsFullscreenExit } from "react-icons/bs";
 import { useSwipe } from "@/hooks/useSwipe";
+import { useSwipePreview } from "@/hooks/useSwipePreview";
+
 
 type Props = {
   project: Project;
@@ -24,6 +26,25 @@ const ProjectModal = ({ project, onClose }: Props) => {
   onSwipeRight: prev,
 });
 
+const {
+  previewHandlers,
+  previewStyle,
+  resetPreview,
+} = useSwipePreview();
+
+
+useEffect(() => {
+  resetPreview();
+}, [index, resetPreview]);
+
+
+//? Bloquer le scroll de l'arrière-plan
+  useEffect(() => {
+  document.body.style.overflow = "hidden";
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, []);
   
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
@@ -49,6 +70,8 @@ const ProjectModal = ({ project, onClose }: Props) => {
                 src={project.images[index]}
                 alt={project.title}
                 {...swipeHandlers}
+                {...previewHandlers}
+                style={previewStyle}
                 draggable={false}
                 className="
                  w-full
@@ -58,7 +81,10 @@ const ProjectModal = ({ project, onClose }: Props) => {
                  object-contain
                  transition-transform 
                  duration-300
-                 relative rounded-xl overflow-hidden touch-pan-y
+                 relative rounded-xl 
+                 overflow-hidden
+                 touch-pan-y
+                 will-change-transform
                  "/>
                 
               {project.images.length > 1 && (

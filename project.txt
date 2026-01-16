@@ -58,3 +58,6 @@
     </div>
   </div>
 </div>
+
+👉 Ajouter snap animation au relâchement
+👉 Ajouter indicateur de pagination mobile (● ● ●)
