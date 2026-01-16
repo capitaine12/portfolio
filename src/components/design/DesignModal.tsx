@@ -103,14 +103,12 @@ useEffect(() => {
         )}
 
         {/* IMAGE */}
-<div
-  {...handlers}
-  style={style}
-  className="flex justify-center"
->
+
   <img
     src={images[currentIndex]}
     alt={title}
+      {...handlers}
+  style={style}
     draggable={false}
     className="
       max-h-[72svh]
@@ -122,7 +120,7 @@ useEffect(() => {
       touch-pan-y
     "
   />
-</div>
+
 
 
 
