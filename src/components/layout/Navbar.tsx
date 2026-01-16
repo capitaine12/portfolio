@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
     <header className="w-full bg-white sticky top-0 z-50 shadow-sm">
       <nav className="container mx-auto flex items-center justify-around py-4 px-4">
 
-        <Link to={"/"} className="text-sm 
+        <Link to={"/"} className="text-base
         sm:opacity-70 
         sm:hover:opacity-100 
         lg:opacity-70 
