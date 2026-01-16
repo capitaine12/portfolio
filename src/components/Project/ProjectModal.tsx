@@ -101,7 +101,7 @@ const ProjectModal = ({ project, onClose }: Props) => {
                 will-change-transform "
               />
 {/* Pagination mobile */}
-<div className="flex lg:hidden justify-center gap-2">
+<div className="flex lg:hidden justify-center gap-2 mb-3">
   {project.images.map((_, i) => {
     const active = i === index;
 
