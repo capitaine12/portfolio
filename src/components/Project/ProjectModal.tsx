@@ -81,9 +81,9 @@ const ProjectModal = ({ project, onClose }: Props) => {
                   swipeHandlers.onTouchMove(e);
                 }}
 
-                onTouchEnd={(e) => {
-                  previewHandlers.onTouchEnd(e);
-                  swipeHandlers.onTouchEnd(e);
+                onTouchEnd={() => {
+                  previewHandlers.onTouchEnd();
+                  swipeHandlers.onTouchEnd();
                 }}
 
                 style={previewStyle}

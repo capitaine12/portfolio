@@ -17,27 +17,24 @@ export const useSwipe = ({
     touchEndX.current = e.targetTouches[0].clientX;
   };
 
-  const onTouchEnd = (e: unknown) => {
-    if (
-      touchStartX.current === null ||
-      touchEndX.current === null
-    )
-      return;
+  const onTouchEnd = (_e?: React.TouchEvent) => {
+  if (
+    touchStartX.current === null ||
+    touchEndX.current === null
+  ) return;
 
-    const distance =
-      touchStartX.current - touchEndX.current;
+  const distance =
+    touchStartX.current - touchEndX.current;
 
-    if (Math.abs(distance) < minDistance) return;
+  if (Math.abs(distance) < minDistance) return;
 
-    if (distance > 0) {
-      onSwipeLeft?.();
-    } else {
-      onSwipeRight?.();
-    }
+  if (distance > 0) onSwipeLeft?.();
+  else onSwipeRight?.();
 
-    touchStartX.current = null;
-    touchEndX.current = null;
-  };
+  touchStartX.current = null;
+  touchEndX.current = null;
+};
+
 
   return {
     swipeHandlers: {
