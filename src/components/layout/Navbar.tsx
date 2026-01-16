@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
       <nav className="container mx-auto flex items-center justify-around py-4 px-4">
 
         <h1 className="text-sm font-bold tracking-widest uppercase">
-          Cheikh Ndaiye
+          Cosmos X
         </h1>
 
         <ul className="hidden md:flex text-black font-bold gap-10 text-sm tracking-widest uppercase">
