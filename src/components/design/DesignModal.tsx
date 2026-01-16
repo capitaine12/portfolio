@@ -1,8 +1,7 @@
 import type { DesignModalProps } from "@/types/types";
 import { type FC, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight, BsFullscreenExit } from "react-icons/bs";
-import { useSwipePreview } from "@/hooks/useSwipePreview";
-import { useSwipe } from "@/hooks/useSwipe";
+import {useSwipePreviewIOS} from "@/hooks/useSwipePreview"
 
 const DesignModal: FC<DesignModalProps> = ({
   images,
@@ -23,12 +22,23 @@ const DesignModal: FC<DesignModalProps> = ({
 }, []);
 
 // Swipe handling
-const { swipeHandlers } = useSwipe({
+/* const {
+  previewHandlers,
+  previewStyle,
+} = useSwipePreview((deltaX) => {
+  if (Math.abs(deltaX) < 40) return;
+
+  if (deltaX < 0) {
+    onNext();
+  } else {
+    onPrev();
+  }
+}); */
+const { handlers, style } = useSwipePreviewIOS({
   onSwipeLeft: onNext,
   onSwipeRight: onPrev,
 });
 
-const { previewHandlers, previewStyle } = useSwipePreview();
 
 
 // Préchargement de l'image suivante
@@ -39,7 +49,6 @@ useEffect(() => {
   const img = new Image();
   img.src = images[nextIndex];
 }, [currentIndex, images]);
-
 
   // Navigation clavier
   useEffect(() => {
@@ -94,11 +103,10 @@ useEffect(() => {
         )}
 
         {/* IMAGE */}
-       <div
-  {...swipeHandlers}
-  {...previewHandlers}
-  style={previewStyle}
-  className="will-change-transform flex justify-center"
+<div
+  {...handlers}
+  style={style}
+  className="flex justify-center"
 >
   <img
     src={images[currentIndex]}
@@ -154,4 +162,5 @@ useEffect(() => {
   );
 };
 export default DesignModal;
+
 
