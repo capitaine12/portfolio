@@ -1,7 +1,8 @@
+import { useSwipeGallery } from "@/hooks/useSwipePreview";
 import type { DesignModalProps } from "@/types/types";
 import { type FC, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight, BsFullscreenExit } from "react-icons/bs";
-import {useSwipePreviewIOS} from "@/hooks/useSwipePreview"
+
 
 const DesignModal: FC<DesignModalProps> = ({
   images,
@@ -21,24 +22,10 @@ const DesignModal: FC<DesignModalProps> = ({
   };
 }, []);
 
-// Swipe handling
-/* const {
-  previewHandlers,
-  previewStyle,
-} = useSwipePreview((deltaX) => {
-  if (Math.abs(deltaX) < 40) return;
-
-  if (deltaX < 0) {
-    onNext();
-  } else {
-    onPrev();
-  }
-}); */
-const { handlers, style } = useSwipePreviewIOS({
+const { handlers, style } = useSwipeGallery({
   onSwipeLeft: onNext,
   onSwipeRight: onPrev,
 });
-
 
 
 // Préchargement de l'image suivante
@@ -107,8 +94,8 @@ useEffect(() => {
   <img
     src={images[currentIndex]}
     alt={title}
-      {...handlers}
-  style={style}
+    {...handlers}
+    style={style}
     draggable={false}
     className="
       max-h-[72svh]
@@ -118,11 +105,9 @@ useEffect(() => {
       rounded-lg
       select-none
       touch-pan-y
+      flex justify-center
     "
   />
-
-
-
 
         {/* RIGHT */}
         {currentIndex < images.length - 1 && (

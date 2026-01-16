@@ -1,53 +1,55 @@
 import { useRef, useState } from "react";
 
-type SwipePreviewProps = {
+type SwipeGalleryProps = {
   onSwipeLeft: () => void;
   onSwipeRight: () => void;
   threshold?: number;
 };
 
-export const useSwipePreviewIOS = ({
+export const useSwipeGallery = ({
   onSwipeLeft,
   onSwipeRight,
-  threshold = 80,
-}: SwipePreviewProps) => {
+  threshold = 60,
+}: SwipeGalleryProps) => {
   const startX = useRef<number | null>(null);
   const [translateX, setTranslateX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
+  const [transition, setTransition] = useState("none");
 
   const onTouchStart = (e: React.TouchEvent) => {
     startX.current = e.touches[0].clientX;
-    setIsDragging(true);
+    setTransition("none");
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
     if (startX.current === null) return;
-
     const delta = e.touches[0].clientX - startX.current;
-
-    // résistance façon iOS
-    const resistance = Math.abs(delta) > 120
-      ? 120 + (delta - Math.sign(delta) * 120) * 0.3
-      : delta;
-
-    setTranslateX(resistance);
+    setTranslateX(delta);
   };
 
   const onTouchEnd = () => {
-    setIsDragging(false);
+    //setIsDragging(false);
 
-    if (Math.abs(translateX) > threshold) {
-      const direction = translateX > 0 ? 1 : -1;
-
-      // slide out
-      setTranslateX(direction * window.innerWidth);
-
+    if (translateX > threshold) {
+      // swipe droite
+      setTransition("transform 0.25s ease-out");
+      setTranslateX(window.innerWidth); // l'image sort à droite
       setTimeout(() => {
-        direction > 0 ? onSwipeRight() : onSwipeLeft();
+        onSwipeRight();
         setTranslateX(0);
-      }, 200);
+        setTransition("none");
+      }, 250);
+    } else if (translateX < -threshold) {
+      // swipe gauche
+      setTransition("transform 0.25s ease-out");
+      setTranslateX(-window.innerWidth); // l'image sort à gauche
+      setTimeout(() => {
+        onSwipeLeft();
+        setTranslateX(0);
+        setTransition("none");
+      }, 250);
     } else {
-      // snap back
+      // pas assez -> snap back
+      setTransition("transform 0.2s ease-out");
       setTranslateX(0);
     }
 
@@ -55,16 +57,10 @@ export const useSwipePreviewIOS = ({
   };
 
   return {
-    handlers: {
-      onTouchStart,
-      onTouchMove,
-      onTouchEnd,
-    },
+    handlers: { onTouchStart, onTouchMove, onTouchEnd },
     style: {
       transform: `translateX(${translateX}px)`,
-      transition: isDragging
-        ? "none"
-        : "transform 0.25s cubic-bezier(.22,.61,.36,1)",
+      transition: transition,
       willChange: "transform",
     } as React.CSSProperties,
   };
