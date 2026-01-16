@@ -1,9 +1,15 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import type { NavItem } from "@/types/types";
 import { navItems } from "@/data/LinkItems";
 
 const Navbar: React.FC = () => {
+
+  const { pathname } = useLocation();
+  
+    const currentPage =
+    navItems.find((item) => item.path === pathname)?.label ?? "Accueil";
+
   return (
     <header className="w-full bg-white sticky top-0 z-50 shadow-sm">
       <nav className="container mx-auto flex items-center justify-between sm:justify-around lg:justify-around py-4 px-4">
@@ -35,8 +41,8 @@ const Navbar: React.FC = () => {
           ))}
         </ul>
 
-        <span className="md:hidden text-xs uppercase">
-          Design
+             <span className="md:hidden text-xs uppercase tracking-widest opacity-70">
+          {currentPage}
         </span>
       </nav>
     </header>
