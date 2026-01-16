@@ -22,4 +22,5 @@ export const items = [
   { label: "Projets", path: "/projects", icon: BsFolder },
   { label: "Services", path: "/services", icon: BsGear },
   { label: "Contact", path: "/contact", icon: BsEnvelope },
+  { label: "Contact", path: "/contact", icon: BsEnvelope },
 ];
