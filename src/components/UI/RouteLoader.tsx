@@ -11,7 +11,7 @@ const RouteLoader = ({ children }: { children: React.ReactNode }) => {
 
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, [location.pathname]);

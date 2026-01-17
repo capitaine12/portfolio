@@ -38,7 +38,7 @@ export const projects: Project[] = [
       parainage4,
     ],
     stacks: ["javascript" , "html", "css"],
-    link: "https://humm-niam.com",
+    /* link: "#", */
   },
     {
     id: 2,
