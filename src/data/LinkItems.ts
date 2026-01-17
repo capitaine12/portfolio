@@ -4,7 +4,7 @@ import {
   BsPalette,
   BsFolder,
   BsGear,
-  BsEnvelope,
+  BsChatSquareDots,
 } from "react-icons/bs";
 
 
@@ -21,6 +21,6 @@ export const items = [
   { label: "Design", path: "/design", icon: BsPalette },
   { label: "Projets", path: "/projects", icon: BsFolder },
   { label: "Services", path: "/services", icon: BsGear },
-  { label: "Contact", path: "/contact", icon: BsEnvelope },
+  { label: "Contact", path: "/contact", icon: BsChatSquareDots },
   
 ];
