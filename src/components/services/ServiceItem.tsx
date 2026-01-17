@@ -24,7 +24,7 @@ const ServiceItem = ({ service, reverse }: Props) => {
         <img
           src={service.image}
           alt={service.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-content"
         />
       </div>
 
