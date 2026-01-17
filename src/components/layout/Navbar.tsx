@@ -6,12 +6,12 @@ import { navItems } from "@/data/LinkItems";
 const Navbar: React.FC = () => {
 
   const { pathname } = useLocation();
-  
+
     const currentPage =
     navItems.find((item) => item.path === pathname)?.label ?? "Accueil";
 
   return (
-    <header className="w-full bg-white sticky top-0 z-50 shadow-sm">
+    <header className="w-full bg-white/95 sm:bg-white lg:bg-white sticky top-0 z-50 shadow-sm">
       <nav className="container mx-auto flex items-center justify-between sm:justify-around lg:justify-around py-4 px-4">
 
         <Link to={"/"} className="text-base
