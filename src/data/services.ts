@@ -1,4 +1,5 @@
 import type { Service } from "@/types/types";
+import img from "@/assets/images/gallery/img3.png"
 
 export const services: Service[] = [
   {
@@ -9,7 +10,7 @@ export const services: Service[] = [
       "Création d'interfaces utilisateur attrayantes et fonctionnelles",
       "Intégration de designs responsives et optimisés pour tous les appareils",
     ],
-    image: "/images/service-1.jpg",
+    image: img,
   },
   {
     id: 2,
