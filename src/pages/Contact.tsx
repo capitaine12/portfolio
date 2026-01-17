@@ -15,7 +15,7 @@ const Contact: React.FC = () => {
     <div className="flex flex-col items-center justify-center min-h-[70vh] gap-12">
 
   <div className="flex flex-col gap-10 text-center lg:text-left">
-    <span className="text-red-800 text-center bg-red-300"> les liens ne fonctions pas pour le moment</span>
+    <span className="text-red-800 px-2.5 text-center bg-red-300"> les liens ne fonctions pas pour le moment</span>
     {Contacts.map((contact) => (
       <a
         key={contact.name}
