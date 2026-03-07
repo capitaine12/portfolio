@@ -8,8 +8,8 @@ const Hero: React.FC = () => {
     <section   className="min-h-screen flex items-center">
       <div className="container mx-auto ">
         <HeroContent 
-        onMoreClick={() => navigate('/design')}
-        /* onDownloadCV={() => console.log('Téléchargement CV')} */
+        onMoreClick={() => navigate('/services')}
+        onDownloadCV={() => console.log('Téléchargement CV')}
         />
       </div>
     </section>
