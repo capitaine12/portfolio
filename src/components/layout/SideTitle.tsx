@@ -7,8 +7,8 @@ const SideTitle: FC<SideTitleProps> = ({ text, className }) => {
   return (
     <div
       className={clsx(
-        'fixed left-6 top-[60%] -translate-y-1/2',
-        'hidden lg:flex flex-col items-center gap-10',
+        'fixed left-6 ', /* top-[60%] -translate-y-1/2 */
+        'hidden lg:flex flex-col items-center justify-center gap-10',
         className
       )}
     >
@@ -16,7 +16,7 @@ const SideTitle: FC<SideTitleProps> = ({ text, className }) => {
         <span
           key={index}
           className="
-            text-5xl
+             lg:text-4xl
             font-bold
             text-white
             tracking-widest
