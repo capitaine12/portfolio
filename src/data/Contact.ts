@@ -14,7 +14,7 @@ export const Contacts: Contact[] = [
   {
     name: 'WhatsApp',
     icon: "whatsapp",
-    link: 'https://wa.me/221780121858',
+    link: 'https://api.whatsapp.com/send?phone=221780121858',
   },
 
   {
