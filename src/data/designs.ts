@@ -14,6 +14,7 @@ import img11 from '@/assets/images/gallery/img11.png';
 import img12 from '@/assets/images/gallery/img12.png';
 import img13 from '@/assets/images/gallery/img13.png';
 import img14 from '@/assets/images/gallery/img14.png';
+import img15 from '@/assets/images/gallery/img14.png';
 import img16 from '@/assets/images/gallery/img16.png';
 import img17 from '@/assets/images/gallery/img17.png';
 import img18 from '@/assets/images/gallery/img18.png';
@@ -24,6 +25,7 @@ import img22 from '@/assets/images/gallery/img22.png';
 import img23 from '@/assets/images/gallery/img23.png';
 import img24 from '@/assets/images/gallery/img24.png';
 import img25 from '@/assets/images/gallery/img25.png';
+
 
 
 
@@ -201,6 +203,13 @@ export const designs: Design[] = [
     client: "Demande d'un client",
     date: '05/10/2025',
     image: img25,
+  },
+  {
+    id: 25,
+    title: 'Babel Beaty',
+    client: "Demande d'un client",
+    date: '05/03/2026',
+    image: img15,
   },
 
 ];
