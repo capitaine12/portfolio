@@ -34,6 +34,17 @@ import l9 from "@/assets/images/web/l9.png";
 import l10 from "@/assets/images/web/l10.png";
 import l11 from "@/assets/images/web/l11.png";
 
+import Home from "@/assets/images/web/Home.png";
+import sc1 from "@/assets/images/web/sc2.png";
+import sc2 from "@/assets/images/web/sc3.png";
+import sc3 from "@/assets/images/web/sc4.png";
+import sc4 from "@/assets/images/web/sc5.png";
+import sc5 from "@/assets/images/web/sc6.png";
+import sc6 from "@/assets/images/web/sc7.png";
+import sc7 from "@/assets/images/web/sc8.png";
+import sc8 from "@/assets/images/web/sc9.png";
+
+
 export const projects: Project[] = [
   
   {
@@ -107,5 +118,26 @@ export const projects: Project[] = [
       l11
     ],
     stacks: ["python", "pyqt"],
+  },
+
+  {
+    id: 4,
+    title: "Sage Caise",
+    description: "Logiciel Desktop de gestion de stocke et de vente pour les petites entreprises",
+    thumbnail: Home,
+    cover: Home,
+    images: [
+      Home,
+      sc1,
+      sc2,
+      sc3,
+      sc4,
+      sc5,
+      sc6,
+      sc7,
+      sc8,
+
+    ],
+    stacks: ["figma"],
   },
 ];

@@ -15,6 +15,7 @@ const stackIcons = {
   django: <FaLaravel size={25} />,
   python: <FaPython size={25} />,
   pyqt: <SiQt size={25} />,
+  figma: <FaReact size={25} />,
 
 
 };
