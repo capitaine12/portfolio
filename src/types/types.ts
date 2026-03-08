@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-export type StackType = "react" | "tailwind" | "laravel" | "vue" | "nodejs" | "django" | "flutter" | "html" | "css" | "javascript";
+export type StackType = "react" | "tailwind" | "laravel" | "vue" | "nodejs" | "django" | "html" | "css" | "javascript" | "python" | "pyqt";
 export type IconType = "Instagram" | "LinkedIn" | "whatsapp" | "Email";
 
 export interface Project {

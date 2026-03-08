@@ -22,6 +22,18 @@ import h5 from "@/assets/images/web/h6.png";
 import h6 from "@/assets/images/web/h7.png";
 import h7 from "@/assets/images/web/h8.png";
 
+import l1 from "@/assets/images/web/l1.png";
+import l2 from "@/assets/images/web/l2.png";
+import l3 from "@/assets/images/web/l3.png";
+import l4 from "@/assets/images/web/l4.png";
+import l5 from "@/assets/images/web/l5.png";
+import l6 from "@/assets/images/web/l6.png";
+import l7 from "@/assets/images/web/l7.png";
+import l8 from "@/assets/images/web/l8.png";
+import l9 from "@/assets/images/web/l9.png";
+import l10 from "@/assets/images/web/l10.png";
+import l11 from "@/assets/images/web/l11.png";
+
 export const projects: Project[] = [
   
   {
@@ -74,5 +86,27 @@ export const projects: Project[] = [
       h7,
     ],
     stacks: ["react", "tailwind"],
+  },
+    {
+    id: 4,
+    title: "Log BFEM",
+    description: "Logiciel Desktop de gestion des notes du BFEM",
+    thumbnail: thumbnail3,
+    cover: thumbnail3,
+    images: [
+      thumbnail3,
+      l1,
+      l2,
+      l3,
+      l4,
+      l5,
+      l6,
+      l7,
+      l8,
+      l9,
+      l10,
+      l11
+    ],
+    stacks: ["python", "pyqt"],
   },
 ];

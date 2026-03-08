@@ -1,4 +1,4 @@
-import { FaReact, FaLaravel, FaCss3Alt } from "react-icons/fa";
+import { FaReact, FaLaravel, FaCss3Alt, FaPython } from "react-icons/fa";
 import { SiTailwindcss } from "react-icons/si";
 import type { Project } from "@/types/types";
 import { FaHtml5, FaSquareJs } from "react-icons/fa6";
@@ -13,10 +13,12 @@ const stackIcons = {
   javascript: <FaSquareJs size={25} />,
   nodejs: <FaSquareJs size={25} />,
   django: <FaLaravel size={25} />,
-  flutter: <FaReact size={25} />,
+  python: <FaPython size={25} />,
+  pyqt: <FaPython size={25} />,
+
 
 };
-
+/* SiQt */
 type Props = {
   project: Project;
   onClick: () => void;
