@@ -35,14 +35,14 @@ import l10 from "@/assets/images/web/l10.png";
 import l11 from "@/assets/images/web/l11.png";
 
 import Home from "@/assets/images/web/Home.png";
-import sc1 from "@/assets/images/web/sc2.png";
-import sc2 from "@/assets/images/web/sc3.png";
-import sc3 from "@/assets/images/web/sc4.png";
-import sc4 from "@/assets/images/web/sc5.png";
-import sc5 from "@/assets/images/web/sc6.png";
-import sc6 from "@/assets/images/web/sc7.png";
-import sc7 from "@/assets/images/web/sc8.png";
-import sc8 from "@/assets/images/web/sc9.png";
+import sc1 from "@/assets/images/web/sc1.png";
+import sc2 from "@/assets/images/web/sc2.png";
+import sc3 from "@/assets/images/web/sc3.png";
+import sc4 from "@/assets/images/web/sc4.png";
+import sc5 from "@/assets/images/web/sc5.png";
+import sc6 from "@/assets/images/web/sc6.png";
+import sc7 from "@/assets/images/web/sc7.png";
+import sc8 from "@/assets/images/web/sc8.png";
 
 
 export const projects: Project[] = [
