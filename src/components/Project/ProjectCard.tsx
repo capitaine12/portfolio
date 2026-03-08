@@ -2,6 +2,7 @@ import { FaReact, FaLaravel, FaCss3Alt, FaPython } from "react-icons/fa";
 import { SiQt, SiTailwindcss } from "react-icons/si";
 import type { Project } from "@/types/types";
 import { FaHtml5, FaSquareJs } from "react-icons/fa6";
+import { CgFigma } from "react-icons/cg";
 
 const stackIcons = {
   react: <FaReact size={25}/>,
@@ -15,7 +16,7 @@ const stackIcons = {
   django: <FaLaravel size={25} />,
   python: <FaPython size={25} />,
   pyqt: <SiQt size={25} />,
-  figma: <FaReact size={25} />,
+  figma: <CgFigma size={25} />,
 
 
 };
