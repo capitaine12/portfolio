@@ -14,7 +14,7 @@ import img11 from '@/assets/images/gallery/img11.png';
 import img12 from '@/assets/images/gallery/img12.png';
 import img13 from '@/assets/images/gallery/img13.png';
 import img14 from '@/assets/images/gallery/img14.png';
-import img15 from '@/assets/images/gallery/img14.png';
+import img15 from '@/assets/images/gallery/img15.png';
 import img16 from '@/assets/images/gallery/img16.png';
 import img17 from '@/assets/images/gallery/img17.png';
 import img18 from '@/assets/images/gallery/img18.png';
