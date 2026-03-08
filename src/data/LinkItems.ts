@@ -1,7 +1,7 @@
 import type { NavItem } from "../types/types";
 import {
   BsHouse,
-  BsPalette,
+  BsCollection,
   BsFolder,
   BsGear,
   BsChatSquareDots,
@@ -11,7 +11,7 @@ import {
 export const navItems: NavItem[] = [
   { label: "Accueil", path: "/" },
   { label: "Services", path: "/services" },
-  { label: "Design", path: "/design" },
+  { label: "Galerie", path: "/design" },
   { label: "Projets", path: "/projects" },
   { label: "Contact", path: "/contact" },
 ];
@@ -19,7 +19,7 @@ export const navItems: NavItem[] = [
 export const items = [
   { label: "Accueil", path: "/", icon: BsHouse },
   { label: "Services", path: "/services", icon: BsGear },
-  { label: "Design", path: "/design", icon: BsPalette },
+  { label: "Galerie", path: "/design", icon: BsCollection },
   { label: "Projets", path: "/projects", icon: BsFolder },
   { label: "Contact", path: "/contact", icon: BsChatSquareDots },
   
