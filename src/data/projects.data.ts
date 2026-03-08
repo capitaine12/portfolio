@@ -90,7 +90,7 @@ export const projects: Project[] = [
     {
     id: 4,
     title: "Log BFEM",
-    description: "Logiciel Desktop de gestion des notes du BFEM",
+    description: "Logiciel Desktop de gestion des notes des candidats du BFEM",
     thumbnail: l1,
     cover: l1,
     images: [
